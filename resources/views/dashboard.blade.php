@@ -7,9 +7,16 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-md">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                {{('Hoje é: ')}}{{date('d-m-Y') }}
+                {{('Escrever novo registro: ')}}
+                <a href="{{ route('dashboard') }}">
+                        <img src="/assets/add-icon.png" width="50px">
+                    </a>
+                </div>
+                <div class="p-6 text-gray-900">
+                {{('oi')}}
                 </div>
             </div>
         </div>
