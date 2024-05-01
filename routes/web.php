@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/create-diario', [DiarioController::class, 'createView'])->name('show-create');
+    Route::post('/create-diario', [DiarioController::class, 'addRegister'])->name('add-registro');
 });
 
 require __DIR__.'/auth.php';
