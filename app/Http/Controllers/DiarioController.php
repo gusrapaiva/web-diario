@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 class DiarioController extends Controller
 {
     
-    public function createView()
+    public function readAll()
+    {
+        $dadosDiario = Diario::query();
+        $dadosDiario = $dadosDiario->get();
+        
+        return view('dashboard',['dadosDiario' => $dadosDiario]);
+    }
+    
+        public function createView()
     {
         return view("diario-create");
     }
