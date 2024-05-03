@@ -24,18 +24,31 @@
                 </div>    
             </div>
 
-            <div class="flex items-center justify-between bg-white overflow-hidden shadow-sm sm:rounded-md mb-10">
-                <div class="items-center p-6 text-gray-900">
-                    {{('10-01-2024')}}
+
+            @if($registros->isEmpty())
+                <div class="flex justify-center bg-white overflow-hidden shadow-sm sm:rounded-md mb-10">
+                    <div class="p-6 text-gray-900 flex-row">
+                        {{__('Você ainda não tem nenhum registro no diário.')}}
+                    </div>
+                </div>
+            @endif
+
+            @foreach($registros as $registro)
+        
+                <div class="flex items-center justify-between bg-white overflow-hidden shadow-sm sm:rounded-md mb-10">
+                    <div class="items-center p-6 text-gray-900">
+                        {{ ('Data: ') }}{{ $registro->data}}
+                    </div>
+                    <div class="flex items-center items-center p-6 text-gray-900">
+                        {{('Título: ')}} {{$registro->titulo}}
+                        <a href="{{ route('dashboard') }}">
+                            <img src="/assets/olho.png" width="50px">
+                        </a>
+                    </div>
                 </div>
 
-                <div class="flex items-center items-center p-6 text-gray-900">
-                    {{('Título: Dia na praia')}}
-                    <a href="{{ route('dashboard') }}">
-                        <img src="/assets/olho.png" width="50px">
-                    </a>
-                </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
 </x-app-layout>

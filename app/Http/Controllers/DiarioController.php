@@ -9,12 +9,11 @@ use Illuminate\Http\Request;
 class DiarioController extends Controller
 {
     
-    public function readAll()
-    {
-        $dadosDiario = Diario::query();
-        $dadosDiario = $dadosDiario->get();
-        
-        return view('dashboard',['dadosDiario' => $dadosDiario]);
+    public function readAll(Request $request)
+    {   
+        $registros = Diario::where('id_user', $request->user()->id)->get();
+
+        return view('/dashboard', ['registros' => $registros]);
     }
     
         public function createView()
@@ -32,7 +31,7 @@ class DiarioController extends Controller
         ]);
 
         Diario::create($dados);
-        return View('dashboard');
+        return redirect('dashboard');
     }
 
 }

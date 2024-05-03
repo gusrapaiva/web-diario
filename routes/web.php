@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/create-diario', [DiarioController::class, 'createView'])->name('show-create');
     Route::post('/create-diario', [DiarioController::class, 'addRegister'])->name('add-registro');
+    Route::get('dashboard', [DiarioController::class, 'readAll'])->name('dashboard');
+
 
 });
 
