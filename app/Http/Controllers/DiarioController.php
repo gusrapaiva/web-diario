@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\diario;
+use App\Models\Diario;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -32,6 +32,27 @@ class DiarioController extends Controller
 
         Diario::create($dados);
         return redirect('dashboard');
+    }
+
+    public function viewUpdate(Diario $id, Request $request)
+    {
+        
+      
+        return view('diario-view', ['registros' => $id]);
+    }
+
+    public function updateDiario(Diario $id, Request $request)
+    {
+        $dados = $request->validate([
+            'titulo' => 'string|required',
+            'texto' => 'string|required',
+            'data' => 'string|required',
+        ]);
+
+        $id->fill($dados);
+        $id->save();
+        
+        return Redirect::to('dashboard');
     }
 
 }

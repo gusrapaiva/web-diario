@@ -41,8 +41,11 @@
                     </div>
                     <div class="flex items-center items-center p-6 text-gray-900">
                         {{('Título: ')}} {{$registro->titulo}}
-                        <a href="{{ route('dashboard') }}">
-                            <img src="/assets/olho.png" width="50px">
+                        <a href="{{ route('show-update', $registro->id) }}">
+                            <img class="mx-4" src="/assets/edit.svg  " width="30px">
+                        </a>
+                        <a href="{{ route('show-update', $registro->id) }}">
+                            <img src="/assets/trash.svg" width="30px">
                         </a>
                     </div>
                 </div>
