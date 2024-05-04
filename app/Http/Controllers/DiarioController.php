@@ -36,8 +36,6 @@ class DiarioController extends Controller
 
     public function viewUpdate(Diario $id, Request $request)
     {
-        
-      
         return view('diario-view', ['registros' => $id]);
     }
 
@@ -53,6 +51,12 @@ class DiarioController extends Controller
         $id->save();
         
         return Redirect::to('dashboard');
+    }
+
+    public function destroy(Diario $id)
+    {
+        $id->delete();
+        return redirect('dashboard');
     }
 
 }

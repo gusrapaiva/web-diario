@@ -44,9 +44,11 @@
                         <a href="{{ route('show-update', $registro->id) }}">
                             <img class="mx-4" src="/assets/edit.svg  " width="30px">
                         </a>
-                        <a href="{{ route('show-update', $registro->id) }}">
-                            <img src="/assets/trash.svg" width="30px">
-                        </a>
+                        <form method="post" action="{{ route('delete-diario', $registro->id) }}">
+                            @method('delete')
+                            @csrf
+                            <button><img src="/assets/trash.svg" width="30px"></button>
+                        </form>
                     </div>
                 </div>
 

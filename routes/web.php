@@ -23,7 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DiarioController::class, 'readAll'])->name('dashboard');
     
     Route::get('viewUpdate/{id}', [DiarioController::class, 'viewUpdate'])->name('show-update');
-   Route::put('diario/{id}', [DiarioController::class, 'updateDiario'])->name('update-diario');
+    Route::put('diario/{id}', [DiarioController::class, 'updateDiario'])->name('update-diario');
+
+   Route::delete('dashboard/{id}', [DiarioController::class, 'destroy'])->name('delete-diario');
 });
 
 require __DIR__.'/auth.php';
