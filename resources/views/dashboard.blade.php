@@ -35,20 +35,28 @@
 
             @foreach($registros as $registro)
         
-                <div class="flex items-center justify-between bg-white overflow-hidden shadow-sm sm:rounded-md mb-10">
-                    <div class="items-center p-6 text-gray-900">
-                        {{ ('Data: ') }}{{ $registro->data}}
+                <div class=" bg-white overflow-hidden shadow-sm sm:rounded-md mb-10">
+                    <div class="flex items-center justify-between">
+                        <div class="items-center p-6 text-gray-900">
+                            {{('Título: ')}} {{$registro->titulo}}
+                        </div>
+                        <div class="flex items-center items-center p-6 text-gray-900">
+                            {{ ('Data: ') }}{{ $registro->data}}
+                            <a href="{{ route('show-update', $registro->id) }}">
+                                <img class="mx-4" src="/assets/edit.svg  " width="30px">
+                            </a>
+                            <form method="post" action="{{ route('delete-diario', $registro->id) }}">
+                                @method('delete')
+                                @csrf
+                                <button><img src="/assets/trash.svg" width="30px"></button>
+                            </form>
+                        </div>
                     </div>
-                    <div class="flex items-center items-center p-6 text-gray-900">
-                        {{('Título: ')}} {{$registro->titulo}}
-                        <a href="{{ route('show-update', $registro->id) }}">
-                            <img class="mx-4" src="/assets/edit.svg  " width="30px">
-                        </a>
-                        <form method="post" action="{{ route('delete-diario', $registro->id) }}">
-                            @method('delete')
-                            @csrf
-                            <button><img src="/assets/trash.svg" width="30px"></button>
-                        </form>
+                    <div class="p-6">
+                        Texto:
+                        <div class="flex items-center justify-center mb-4">
+                            {{$registro->texto}}
+                        </div>
                     </div>
                 </div>
 

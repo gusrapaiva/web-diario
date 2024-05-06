@@ -28,7 +28,10 @@ class DiarioController extends Controller
             'texto' => 'string|required',
             'data' => 'string|required',
             'id_user' => 'int|required',
+            'imagem' => 'required|mimes:jpg,png|max:2048'
         ]);
+
+        $path  = $request->file('imagem')->store('public/files');
 
         Diario::create($dados);
         return redirect('dashboard');
