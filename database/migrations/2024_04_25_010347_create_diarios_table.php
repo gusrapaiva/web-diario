@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('diarios', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('texto');
+            $table->string('texto', 64);
             $table->string('data');
             $table->unsignedBigInteger('id_user')->references('id')->on('user');
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

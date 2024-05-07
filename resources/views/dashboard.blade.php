@@ -52,12 +52,26 @@
                             </form>
                         </div>
                     </div>
-                    <div class="p-6">
-                        Texto:
-                        <div class="flex items-center justify-center mb-4">
-                            {{$registro->texto}}
+                    @if ($registro ->imagem == "placeholder.png")
+                        <div class="p-6">
+                            Texto:
+                            <div class="flex items-center justify-center mb-4">
+                                {{$registro->texto}}
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="p-6 flex justify-between">
+                            <div class="flex row-col">
+                                Texto:
+                                <div class="flex items-center justify-center mb-4">
+                                    {{$registro->texto}}
+                                </div>
+                            </div>
+                            <div class="flex align-center" style="width: 250px; height: 250px; overflow: hidden;">
+                                <img src="/storage/imagens/{{$registro->imagem}}" width="100%">
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
             @endforeach

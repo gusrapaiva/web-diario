@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-md p-10 mt-10">
-        <form class="max-w-md mx-auto" method="post" action="{{route('add-registro')}}">
+        <form class="max-w-md mx-auto" method="POST" action="{{ route('add-registro') }}" enctype="multipart/form-data">
         @csrf  
             <!-- data -->
             <div class="relative z-0 w-full mb-5 group">
@@ -20,10 +20,10 @@
             </div>
             <!-- imagem -->
             <div class="mb-4">
-                <label class="block mb-2 text-sm font-medium text-gray-900" for="file_input">Coloque uma foto</label>
-                <input name="imagem" class="block w-full text-sm text-gray-900 border border-blue-200 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file" accept="image/png, image/jpeg">
+                <label class="block mb-2 text-sm font-medium text-gray-900" for="imagem">Coloque uma foto</label>
+                <input type="file" name="imagem" id="imagem"  class="block w-full text-sm text-gray-900 border border-blue-200 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="file_input_help">
             </div>
-            
+            <!-- botao -->
             <div class="flex justify-center">
                 <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Cadastrar</button>
             </div>

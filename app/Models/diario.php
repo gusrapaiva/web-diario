@@ -13,6 +13,7 @@ class Diario extends Model
         'titulo',
         'texto',
         'data',
-        'id_user'
+        'id_user',
+        'imagem'
     ];
 }

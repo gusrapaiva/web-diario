@@ -23,16 +23,34 @@ class DiarioController extends Controller
 
     public function addRegister(Request $request)
     {   
+
+        if($request->hasFile('imagem')) {
+            $fileNameWithExt = $request->file('imagem')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('imagem')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $request->file('imagem')->storeAs('public/imagens', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'placeholder.png';
+        }
+
+
         $dados = $request->validate([
             'titulo' => 'string|required',
             'texto' => 'string|required',
             'data' => 'string|required',
             'id_user' => 'int|required',
-            'imagem' => 'required|mimes:jpg,png|max:2048'
         ]);
+        
+        $dados = [
+            'titulo' => $request->titulo,
+            'texto' => $request->texto,
+            'data' => $request->data,
+            'id_user' => $request->id_user,
+            'imagem' => $fileNameToStore
+        ];
 
-        $path  = $request->file('imagem')->store('public/files');
-
+        
         Diario::create($dados);
         return redirect('dashboard');
     }
@@ -44,11 +62,30 @@ class DiarioController extends Controller
 
     public function updateDiario(Diario $id, Request $request)
     {
+
+        if($request->hasFile('imagem')) {
+            $fileNameWithExt = $request->file('imagem')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('imagem')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            $request->file('imagem')->storeAs('public/imagens', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'placeholder.png';
+        }
+
         $dados = $request->validate([
             'titulo' => 'string|required',
             'texto' => 'string|required',
             'data' => 'string|required',
         ]);
+
+        $dados = [
+            'titulo' => $request->titulo,
+            'texto' => $request->texto,
+            'data' => $request->data,
+            'id_user' => $request->id_user,
+            'imagem' => $fileNameToStore
+        ];
 
         $id->fill($dados);
         $id->save();
