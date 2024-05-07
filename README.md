@@ -16,3 +16,6 @@ Na home tambem pode ser feito a exclusão do registro, com icones intuitivos
 
 
 ## Acesso de admin
+
+### Home para visualização de usuários
+![image](https://github.com/gusrapaiva/web-diario/assets/127103850/0ff83bb4-9ed5-4b23-83bc-903e49a0ff04)
