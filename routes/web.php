@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DiarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +30,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('admin/dashboard', [HomeController::class, 'index'])->name('dashboard-admin');
+Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard-admin');
